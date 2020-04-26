@@ -154,7 +154,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
                       height: 12,
                     ),
                     Text(
-                      resposta.isEmpty?"Você será respondido em breve, por favor aguarde.":resposta,
+                      resposta.isEmpty?"Você será respondido em breve, por favor aguarde.":resposta,textAlign: TextAlign.start,
                       style: TextStyle(
                           fontWeight: FontWeight.w600, color: Colors.black87),
                     ),

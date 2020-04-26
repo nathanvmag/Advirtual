@@ -38,8 +38,8 @@ class AppConstant {
   //endregion
 
   //region strings
-  static final String appName = 'Türkçe Sözlük';
-  static final String appDescription = 'Türk Dil Kurumu Başkanlığı';
+  static final String appName = 'ADVirtual';
+  static final String appDescription = 'Tire suas dúvidas com poucos cliques';
   static final String appVersion = "v.1.0";
   static final String hakkinda = "Hakkında";
   static final String iletisim = "İletişim";
@@ -57,7 +57,7 @@ class AppConstant {
   static final String appLongRichDescription = "Türk Dil Kurumu";
   static final String appLongDescription =
       '’nun 1945’ten beri yayımlanan Türkçe Sözk’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenerek taşınabilir cihazlar için hazırlanan sürümüdür.';
-  static final String serverAdress= "http://advirtual.pe.hu/server.php";
+  static final String serverAdress= "http://advirtual.pe.hu/application.php";
   //endregion
   //endregion
 
