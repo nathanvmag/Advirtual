@@ -115,19 +115,86 @@ class LoginPageState extends State<LoginPage> {
           TextInputType.emailAddress),
 
           SizedBox(height: 32),
-          Container(
-              height: 60,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: AppConstant.colorPrimary,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                  child: InkWell(
-                      onTap: () {
-                        debugPrint("Logar");
+
+                 InkWell(
+                      onTap: () async {
+                        Map<String,String> params={
+                          "servID":"668",
+                          "email":emailinputTx.text,
+                        };
+                        debugPrint("Esqeuce senha");
+
+                        String response= await httputils.Post(params);
+                        if(response=="OK")
+                        {
+                          var alertStyle = AlertStyle(
+                            animationType:
+                            AnimationType.fromTop,
+                            isCloseButton: false,
+                            isOverlayTapDismiss: false,
+                            descStyle: TextStyle(
+                                fontWeight:
+                                FontWeight.bold),
+                            animationDuration:
+                            Duration(milliseconds: 400),
+                            alertBorder:
+                            RoundedRectangleBorder(
+                              borderRadius:
+                              BorderRadius.circular(10),
+                              side: BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            titleStyle: TextStyle(
+                              color: Colors.green,
+                            ),
+                          );
+                          Alert(
+                            context: context,
+                            style: alertStyle,
+                            type: AlertType.success,
+                            title: "Sucesso",
+                            desc:
+                            "Foi enviado um email com as instruções para recuperar sua senha.",
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20),
+                                ),
+                                onPressed: () =>
+                                    Navigator.pop(context),
+                                color: AppConstant
+                                    .colorPrimary,
+                                radius:
+                                BorderRadius.circular(
+                                    10.0),
+                              ),
+                            ],
+                          ).show();
+
+                        }
+                        else if(response=="W")
+                        {
+                          httputils.errorBox("Não existe nenhuma conta cadastrada com esse email",context);
+                          return;
+                        }
+                        else {
+                          httputils.errorBox("Erro desconhecido\n"+response,context);
+                        }
+
                       },
-                      child: Text("Enviar",
+                      child: Container(
+                          height: 60,
+                          margin: const EdgeInsets.symmetric(horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: AppConstant.colorPrimary,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                              child:Text("Enviar",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -329,7 +396,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
 
-  Widget InputField(String hintText, IconData icon,
+   Widget InputField(String hintText, IconData icon,
       TextEditingController controller, TextInputType inputType,{MaskedTextController mask=null,
       bool passwordfiedl: false}) {
     return Container(

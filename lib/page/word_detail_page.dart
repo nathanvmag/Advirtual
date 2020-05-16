@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_file.dart';
 import 'package:intl/intl.dart';
 import 'package:sozluk/util/app_constant.dart';
 import 'package:sozluk/util/app_widget.dart';
 import 'package:sozluk/util/httputils.dart';
+import 'package:url_launcher/url_launcher.dart';
 class WordDetailPage extends StatefulWidget {
   var infs;
   WordDetailPage(Map<String, dynamic> infos) {
@@ -28,9 +30,17 @@ class _WordDetailPageState extends State<WordDetailPage> {
     debugPrint(resposta);
 
   }
+  TapGestureRecognizer gestureRecognizer;
   @override
   void initState() {
     // TODO: implement initState
+    gestureRecognizer= new TapGestureRecognizer();
+    gestureRecognizer..onTap=(){
+
+      launch(AppConstant.whatsppUrl);
+
+    };
+
     super.initState();
 
 
@@ -169,8 +179,10 @@ class _WordDetailPageState extends State<WordDetailPage> {
                           style: TextStyle(color: AppConstant.colorParagraph),
                         ),
                         TextSpan(
+
                           text: 'aqui.',
                           style: TextStyle(color: AppConstant.colorPullDown1),
+                          recognizer:gestureRecognizer
                         ),
                       ]),
                     )

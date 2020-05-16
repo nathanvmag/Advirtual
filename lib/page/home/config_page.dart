@@ -29,7 +29,7 @@ class ConfigPageState extends State<ConfigPage>{
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .14),
               child: Column(
                 children: <Widget>[
-                  Text("App Sobre", style: TextStyle(fontSize: 14, color: Colors.white)),
+                  Text("Configurações", style: TextStyle(fontSize: 14, color: Colors.white)),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(AppConstant.appVersion, style: TextStyle(fontSize: 12, color: AppConstant.colorVersionText)),
@@ -47,6 +47,20 @@ class ConfigPageState extends State<ConfigPage>{
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: MaterialButton(
+              minWidth: 328,
+              height: 48,
+              elevation: 0,
+              color: AppConstant.colorDrawerButton,
+              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8)),
+              child: Text("Alterar Senha", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConstant.colorHeading)),
+              onPressed: () {
+                __onAlteraSenha();
+              },
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: MaterialButton(
@@ -101,12 +115,30 @@ class ConfigPageState extends State<ConfigPage>{
     //Navigator.pop(context);
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         backgroundColor: Colors.transparent,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * .5,
+            height: MediaQuery.of(context).size.height * .7,
             child: Container(
               child: AppBottomSheetWidgets.buildHakkindaItem(_itemTopMenu("")),
+              decoration: AppBottomSheetWidgets.bottomSheetBoxDecoration,
+            ),
+          );
+        });
+  }
+  void __onAlteraSenha() {
+    //Navigator.pop(context);
+    showModalBottomSheet(
+
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return Container(
+            height: MediaQuery.of(context).size.height * .7,
+            child: Container(
+              child: AppBottomSheetWidgets.buildAlteraItem(_itemTopMenu("Alterar Senha"),context),
               decoration: AppBottomSheetWidgets.bottomSheetBoxDecoration,
             ),
           );
@@ -121,7 +153,7 @@ class ConfigPageState extends State<ConfigPage>{
         builder: (context) {
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) => Container(
-              height: MediaQuery.of(context).size.height * .9,
+              height: MediaQuery.of(context).size.height * .4,
               child: Container(child: _renderItem(setState), decoration: AppBottomSheetWidgets.bottomSheetBoxDecoration),
             ),
           );
@@ -160,7 +192,7 @@ class ConfigPageState extends State<ConfigPage>{
         backgroundColor: Colors.transparent,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * .5,
+            height: MediaQuery.of(context).size.height * .7,
             child: Container(child: _buildDrawerItem, decoration: AppBottomSheetWidgets.bottomSheetBoxDecoration),
           );
         });

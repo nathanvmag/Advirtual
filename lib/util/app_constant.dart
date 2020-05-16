@@ -44,20 +44,21 @@ class AppConstant {
   static final String hakkinda = "Hakkında";
   static final String iletisim = "İletişim";
   static final String iletisimBilgileri = 'İletişim Bilgileri';
-  static final String epostayaz = 'E-Posta Yaz';
+  static final String epostayaz = 'Enviar Whatsapp';
   static final String atasozudeyim = 'Atasözü & Deyim';
   static final String katkioneri = 'Katkı ve Öneriler';
   static final String katkiOneriDetails = 'Katkı ve önerileriniz için bize e-posta gönderebilirsiniz.';
-  static final String address = 'Atatürk Bulvarı No: 217 06680 Kavaklıdere/ANKARA';
+  static final String address = 'Rua: Placeholder,211 - Rio de Janeiro';
   static final String phoneNumber = '+90 312 457 52 00';
   static final String eposta = 'bilgi@tdk.gov.tr';
   static final String magaza = 'Kızılay Kitap Satış Mağazası';
   static final String eMagaza = 'E-Mağazaya Git';
-  static final String magazaAddress = 'Cumhuriyet Mahallesi, Bayındır 1 Sokak, No: 24/6 Kızılay/ANKARA';
-  static final String appLongRichDescription = "Türk Dil Kurumu";
+  static final String magazaAddress = 'Rua: Placeholder,211 - Rio de Janeiro';
+  static final String appLongRichDescription = "ADVagora\n";
   static final String appLongDescription =
-      '’nun 1945’ten beri yayımlanan Türkçe Sözk’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenerek taşınabilir cihazlar için hazırlanan sürümüdür.';
-  static final String serverAdress= "http://advirtual.pe.hu/application.php";
+  'Somos um aplicativo formado por profissionais jurídicos, prontos para lhe auxiliar e prestar o melhor serviço nos diversos ramos do direito. Aqui você terá a solução do seu problema na palma da sua mão. Basta você acessar o aplicativo e começar a usar. Plataforma simples e interativa para melhor atender aos seus interesses.';
+  static final String serverAdress= "http://advagora.com.br/app/application.php";
+  static final String whatsppUrl= "https://api.whatsapp.com/send?phone=555189394501";
   //endregion
   //endregion
 
@@ -70,8 +71,8 @@ class AppConstant {
   static int userID=0;
 
   //region Assets
-  static final String svgLogo = "assets/tdk_logo.svg";
-  static final String svgLogoRed = "assets/tdk_logo_red.svg";
+  static final String svgLogo = "assets/logowhite.svg";
+  static final String svgLogoRed = "assets/logored.svg";
   static final String svgMessage = "assets/tdk_icon_message.svg";
 //endregion
 }

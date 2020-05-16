@@ -108,110 +108,110 @@ class _HomePageState extends State<HomePage> {
                         ? SizedBox(
                             width: MediaQuery.of(context).size.width - 64,
                             child: Column(children: [
-                              Container(
-                                  height: 60,
-                                  margin:
+                              InkWell(
+                                  onTap: () async {
+                                    debugPrint("Logar");
+                                    if (searchController.text.length <
+                                        30) {
+                                      httputils.errorBox(
+                                          "A pergunta deve conter no mínimo 30 caracteres",
+                                          context);
+                                      return;
+                                    }
+                                    if (AppConstant.userID == 0) {
+                                      httputils.errorBox(
+                                          "Login não efetuada corretamente",
+                                          context);
+                                      return;
+                                    }
+                                    Map<String, String> params = {
+                                      "servID": "442",
+                                      "pergunta": searchController.text,
+                                      "userID":
+                                      AppConstant.userID.toString(),
+                                    };
+
+                                    String response =
+                                    await httputils.Post(params);
+                                    if (response == "OK") {
+                                      searchController.text = "";
+                                      FocusScope.of(context)
+                                          .requestFocus(FocusNode());
+
+                                      var alertStyle = AlertStyle(
+                                        animationType:
+                                        AnimationType.fromTop,
+                                        isCloseButton: false,
+                                        isOverlayTapDismiss: false,
+                                        descStyle: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold),
+                                        animationDuration:
+                                        Duration(milliseconds: 400),
+                                        alertBorder:
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          side: BorderSide(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        titleStyle: TextStyle(
+                                          color: Colors.green,
+                                        ),
+                                      );
+                                      Alert(
+                                        context: context,
+                                        style: alertStyle,
+                                        type: AlertType.success,
+                                        title: "Sucesso",
+                                        desc:
+                                        "Pergunta efetuada com sucesso, aguarde a resposta.",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "OK",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            color: AppConstant
+                                                .colorPrimary,
+                                            radius:
+                                            BorderRadius.circular(
+                                                10.0),
+                                          ),
+                                        ],
+                                      ).show();
+                                    } else {
+                                      httputils.errorBox(
+                                          "Erro ao efetuar pergunta\n" +
+                                              response,
+                                          context);
+                                    }
+                                  },
+                                  child: Container(
+                                      height: 60,
+                                      margin:
                                       const EdgeInsets.symmetric(horizontal: 0),
-                                  decoration: BoxDecoration(
-                                    color: AppConstant.colorPrimary,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: InkWell(
-                                          onTap: () async {
-                                            debugPrint("Logar");
-                                            if (searchController.text.length <
-                                                30) {
-                                              httputils.errorBox(
-                                                  "A pergunta deve conter no mínimo 30 caracteres",
-                                                  context);
-                                              return;
-                                            }
-                                            if (AppConstant.userID == 0) {
-                                              httputils.errorBox(
-                                                  "Login não efetuado corretamente",
-                                                  context);
-                                              return;
-                                            }
-                                            Map<String, String> params = {
-                                              "servID": "442",
-                                              "pergunta": searchController.text,
-                                              "userID":
-                                                  AppConstant.userID.toString(),
-                                            };
-
-                                            String response =
-                                                await httputils.Post(params);
-                                            if (response == "OK") {
-                                              searchController.text = "";
-                                              FocusScope.of(context)
-                                                  .requestFocus(FocusNode());
-
-                                              var alertStyle = AlertStyle(
-                                                animationType:
-                                                    AnimationType.fromTop,
-                                                isCloseButton: false,
-                                                isOverlayTapDismiss: false,
-                                                descStyle: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                animationDuration:
-                                                    Duration(milliseconds: 400),
-                                                alertBorder:
-                                                    RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  side: BorderSide(
-                                                    color: Colors.grey,
-                                                  ),
-                                                ),
-                                                titleStyle: TextStyle(
-                                                  color: Colors.green,
-                                                ),
-                                              );
-                                              Alert(
-                                                context: context,
-                                                style: alertStyle,
-                                                type: AlertType.success,
-                                                title: "Sucesso",
-                                                desc:
-                                                    "Pergunta efetuado com sucesso, aguarde a resposta.",
-                                                buttons: [
-                                                  DialogButton(
-                                                    child: Text(
-                                                      "OK",
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20),
-                                                    ),
-                                                    onPressed: () =>
-                                                        Navigator.pop(context),
-                                                    color: AppConstant
-                                                        .colorPrimary,
-                                                    radius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                ],
-                                              ).show();
-                                            } else {
-                                              httputils.errorBox(
-                                                  "Erro ao efetuar pergunta\n" +
-                                                      response,
-                                                  context);
-                                            }
-                                          },
-                                          child: Text("Enviar pergunta",
+                                      decoration: BoxDecoration(
+                                        color: AppConstant.colorPrimary,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Center(
+                                          child:Text("Enviar pergunta",
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.white))))),
+                                                  color: Colors.white))
+                                      )),
+                              )
+                              ,
                               SizedBox(height: 20),
                               Text(
-                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
-                                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley " +
-                                      "of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap "
-                                          "into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                  "As respostas das perguntas aqui formuladas serão respondidas a medida em que os profissionais jurídicos tiverem acesso a esta e seus pareceres estiverem protos. Estas ingressaram em uma fila por ordem de chegada ao aplicativo e serão todas atendidas dentro da capacitação técnica e pertinência da dúvida. As perguntas elaboradas não possuem custos ou encargos. O Aplicativo não tem a pretensão de elaborar teses ou tratados, expressando apenas a opinião e o entendimento a cerca das diversas linhas de pensamentos do mundo jurídico. Ciente que não teremos todas as respostas, mas certos que compartilharemos todo o nosso conhecimento para formar cidadãos melhores informados e uma sociedade melhor para todos nós.\n*O momento em que o usuário realizar a pergunta, permitirá que esta seja exposta no quadro de notícias do aplicativo.",
                                   textAlign: TextAlign.justify)
                             ]))
                         : HomePageListView(perguntasjson, context),

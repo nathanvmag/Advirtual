@@ -81,7 +81,7 @@ class _HomeNavigatorState extends State<HomeNavigator> {
         initialActiveIndex: _currentPage,
         style: TabStyle.fixedCircle,
         items: <TabItem>[
-          TabItem(icon: Icons.list, title: 'Minhas Perguntas'),
+          TabItem(icon: Icons.list, title: 'Perguntas'),
           TabItem(icon: FontAwesomeIcons.question,title:""),
           TabItem(icon:Icons.settings ,title: 'Configurações'),
 

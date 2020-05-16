@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.2+3
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -31,19 +31,35 @@ dependencies:
   flutter_masked_text: ^0.8.0
   rflutter_alert: ^1.0.3
   http: ^0.12.0+4
-  shared_preferences: ^0.5.7
+  shared_preferences: ^0.5.7+2
+  shared_preferences_platform_interface: ^1.0.4
   intl: ^0.16.1
+  flutter_launcher_icons: "^0.7.3"
+  flutter_native_splash: ^0.1.9
+  flutter_launcher_name: "^0.0.1"
+  flutter_automation: ^1.3.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.8.0
 
-  flutter_native_splash: ^0.1.9
+flutter_icons:
+  android: true
+  ios: true
+  image_path_ios: "assets/icons2.png"
+
+  image_path_android: "assets/icon.png"
+  adaptive_icon_background: "ffffff"
 
 flutter_native_splash:
   color: "E11E3C"
-  android_disable_fullscreen: true
+  image: "assets/splash.png"
+  fill: true
+  android: true
+  ios: true
+flutter_launcher_name:
+  name: "ADV Agora"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
